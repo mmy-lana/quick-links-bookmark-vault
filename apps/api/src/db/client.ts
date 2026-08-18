@@ -14,6 +14,11 @@ export async function initDb() {
   await db.execute(SQL_MIGRATIONS.v1_create_categories_table);
   await db.execute(SQL_MIGRATIONS.v1_create_bookmarks_table);
 
+  // Execute index migrations individually (LibSQL enforces single statement per execute)
+  for (const indexSql of SQL_MIGRATIONS.v1_indices) {
+    await db.execute(indexSql);
+  }
+
   // Seed default categories if none exist
   for (const cat of DEFAULT_CATEGORIES) {
     await db.execute({
@@ -21,7 +26,4 @@ export async function initDb() {
       args: [cat.id, cat.name, cat.slug, cat.color, cat.icon]
     });
   }
-
-  // Create indices
-  await db.execute(SQL_MIGRATIONS.v1_create_indices);
 }

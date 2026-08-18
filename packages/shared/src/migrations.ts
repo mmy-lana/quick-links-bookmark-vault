@@ -1,5 +1,5 @@
 export const SQL_MIGRATIONS = {
-	v1_create_categories_table: `
+  v1_create_categories_table: `
     CREATE TABLE IF NOT EXISTS categories (
       id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
@@ -9,7 +9,7 @@ export const SQL_MIGRATIONS = {
       created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
   `,
-	v1_create_bookmarks_table: `
+  v1_create_bookmarks_table: `
     CREATE TABLE IF NOT EXISTS bookmarks (
       id TEXT PRIMARY KEY,
       title TEXT NOT NULL,
@@ -26,10 +26,10 @@ export const SQL_MIGRATIONS = {
       FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET DEFAULT
     );
   `,
-	v1_create_indices: `
-    CREATE INDEX IF NOT EXISTS idx_bookmarks_category ON bookmarks(category_id);
-    CREATE INDEX IF NOT EXISTS idx_bookmarks_is_pinned ON bookmarks(is_pinned);
-    CREATE INDEX IF NOT EXISTS idx_bookmarks_is_archived ON bookmarks(is_archived);
-    CREATE INDEX IF NOT EXISTS idx_bookmarks_created_at ON bookmarks(created_at);
-  `
+  v1_indices: [
+    "CREATE INDEX IF NOT EXISTS idx_bookmarks_category ON bookmarks(category_id);",
+    "CREATE INDEX IF NOT EXISTS idx_bookmarks_is_pinned ON bookmarks(is_pinned);",
+    "CREATE INDEX IF NOT EXISTS idx_bookmarks_is_archived ON bookmarks(is_archived);",
+    "CREATE INDEX IF NOT EXISTS idx_bookmarks_created_at ON bookmarks(created_at);"
+  ]
 } as const;
