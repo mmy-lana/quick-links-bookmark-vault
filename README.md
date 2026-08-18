@@ -2,6 +2,12 @@
 
 > High-speed developer bookmark management vault with category tagging and LibSQL persistence.
 
+## 🌐 Live Deployments
+
+- **Web Application (Vercel):** [https://quick-links-bookmark-vault-api.vercel.app](https://quick-links-bookmark-vault-api.vercel.app)
+- **Backend API (Render):** [https://vault-api-jrg3.onrender.com](https://vault-api-jrg3.onrender.com)
+- **API Health Check:** [https://vault-api-jrg3.onrender.com/health](https://vault-api-jrg3.onrender.com/health)
+
 ## 🛠️ Tech Stack
 
 - **Monorepo:** Turborepo + pnpm Workspaces
